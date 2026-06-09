@@ -142,7 +142,7 @@ A modern MERN-based E-Commerce platform featuring secure authentication, product
 - Project Documentation
 - Final Demo Ready
 
-# Stretch Goals (Optional)
+# Stretch Goals
 
 - Product Comparison
 - Price Drop Alerts
