@@ -1,13 +1,17 @@
 
-import './App.css'
 
 function App() {
   return (
-    <div>
-      <h1>Real-Time B2B SaaS Collaboration Workspace</h1>
-      <p>Frontend Development - Internship Project</p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white">
+      <h1 className="text-5xl font-bold">
+        E-Commerce Engine
+      </h1>
+
+      <p className="mt-4 text-xl text-slate-300">
+        Frontend Development - Internship Project
+      </p>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
