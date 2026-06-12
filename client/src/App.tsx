@@ -1,17 +1,18 @@
 
-
+import Navbar from "./components/layout/Navbar";
+import HeroSection from "./components/customer/HeroSection";
+import CategorySection from "./components/customer/CategorySection";
+import FeaturedProducts from "./components/customer/FeaturedProducts";
 function App() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white">
-      <h1 className="text-5xl font-bold">
-        E-Commerce Engine
-      </h1>
-
-      <p className="mt-4 text-xl text-slate-300">
-        Frontend Development - Internship Project
-      </p>
-    </div>
-  )
+    
+  <> 
+      <Navbar/> 
+      <HeroSection/>
+      <CategorySection/>
+      <FeaturedProducts/>
+  </>
+  );
 }
 
-export default App
+export default App;
