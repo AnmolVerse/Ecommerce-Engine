@@ -14,6 +14,8 @@ return (
         style={{
             textAlign: "center",
             marginBottom: "40px",
+            fontSize : "20px",
+            fontWeight : "bold" ,
         }}>
         Featured Products
         </h2>

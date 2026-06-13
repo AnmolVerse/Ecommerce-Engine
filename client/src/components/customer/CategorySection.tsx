@@ -17,6 +17,7 @@ return (
             fontSize: "35px",
             marginBottom: "40px",
             color: "white",
+            fontWeight : "bold" ,
         }}>
         Shop by Category
     </h2>
