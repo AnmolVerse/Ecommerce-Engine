@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import earbuds from "../../assets/products/earbud.jpg";
 import smartwatch from "../../assets/products/smartwatch.jpg";
 import shoes from "../../assets/products/shoes.jpg";
@@ -27,6 +28,13 @@ return (
             gap: "20px",
             flexWrap: "wrap",
         }}>
+            <Link
+  to="/product-details"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
         <div style={productCard}>
 <img
     src={earbuds}
@@ -48,7 +56,14 @@ return (
 <button style={buttonStyle}>
     Add to Cart
 </button>
-</div>
+</div></Link>
+<Link
+  to="/product-details"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
         <div style={productCard}>
 <img
     src={smartwatch}
@@ -70,7 +85,14 @@ return (
 <button style={buttonStyle}>
     Add to Cart
 </button>
-</div>
+</div></Link>
+<Link
+  to="/product-details"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
         <div style={productCard}>
 <img
     src={shoes}
@@ -92,7 +114,14 @@ return (
 <button style={buttonStyle}>
     Add to Cart
 </button>
-</div>
+</div></Link>
+<Link
+  to="/product-details"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
         <div style={productCard}>
 <img
     src={mouse}
@@ -114,7 +143,7 @@ return (
 <button style={buttonStyle}>
     Add to Cart
 </button>
-</div>
+</div></Link>
     </div>
     </div>
     );

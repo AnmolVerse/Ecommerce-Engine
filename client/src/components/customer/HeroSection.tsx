@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import herosection from "../../assets/herosection.jpg";
 import banner1 from "../../assets/banner1.jpg";
@@ -43,7 +43,12 @@ return (
         }}>
         Smart Shopping Powered by AI
     </p>
-
+<Link
+  to="/products"
+  style={{
+    textDecoration: "none",
+  }}
+>
     <button
         style={{
         marginTop: "30px",
@@ -57,7 +62,7 @@ return (
         cursor: "pointer",
         }}>
         Shop Now
-    </button>
+    </button></Link>
     </div>
     );
 }

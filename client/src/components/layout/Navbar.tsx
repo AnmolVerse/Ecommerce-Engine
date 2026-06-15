@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 function Navbar() {
@@ -54,6 +55,12 @@ function Navbar() {
             fontSize: "18px",
             fontFamily:"font-serif",
         }}>
+            <Link
+  to="/ai-search"
+  style={{
+    textDecoration: "none",
+  }}
+>
     <button
     style={{
         padding: "4px 10px",
@@ -64,10 +71,28 @@ function Navbar() {
         fontWeight: "bold",
     }}>
     🤖 AI Search
-    </button>
-        <span>❤️ Wishlist</span>
-        <span>🛒 Cart</span>
-        <span>👤 Login</span>
+    </button></Link>
+       <Link
+  to="/wishlist"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+> <span>❤️ Wishlist</span></Link>
+        <Link
+  to="/wishlist"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+><span>🛒 Cart</span></Link>
+       <Link
+  to="/wishlist"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+> <span>👤 Login</span></Link>
     </div>
     </nav>
 

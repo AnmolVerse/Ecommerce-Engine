@@ -1,11 +1,11 @@
-import earbuds from "../assets/products/earbuds.jpg";
-import watch from "../assets/products/watch.jpg";
+import earbud from "../assets/products/earbud.jpg";
+import smartwatch from "../assets/products/smartwatch.jpg";
 import shoes from "../assets/products/shoes.jpg";
 import mouse from "../assets/products/mouse.jpg";
 export const products = [
 {
     id: 1,
-    image: earbuds,
+    image: earbud,
     name: "Wireless Earbuds",
     price: 1999,
     rating: 5,
@@ -13,7 +13,7 @@ export const products = [
 
 {
     id: 2,
-    image: watch,
+    image: smartwatch,
     name: "Smart Watch",
     price: 3499,
     rating: 5,
