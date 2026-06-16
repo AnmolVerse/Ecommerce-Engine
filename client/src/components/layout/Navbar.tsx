@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import logo from "../../assets/logo.png";
 
 function Navbar() {
+  const [search, setSearch] = useState("");
+const navigate = useNavigate();
+
+const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  if (e.key === "Enter") {
+    navigate(`/products?search=${search}`);
+  }
+};
     return (
         <>
     <nav
@@ -35,17 +44,20 @@ function Navbar() {
     </div>
      {/* Center */}
     <input
-        type="text"
-        
-        placeholder="🔍 Search products..."
-        style={{
-        width: "500px",
-        padding: "10px",
-        color: "white",
-        borderRadius: "5px",
-        border: "none",
-        outline: "none",
-        }}/>
+  type="text"
+  placeholder="🔍 Search products..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  onKeyDown={handleSearch}
+  style={{
+    width: "500px",
+    padding: "10px",
+    color: "white",
+    borderRadius: "5px",
+    border: "none",
+    outline: "none",
+  }}
+/>
       {/* Right Section */}
     <div
         style={{
@@ -107,14 +119,15 @@ function Navbar() {
         color: "white",
         fontWeight: "bold",
         }}>
-        <span>☰ All</span>
-        <span>Categories</span>
-        <span>Today's Deals</span>
-        <span>New Arrivals</span>
-        <span>Best Sellers</span>
-        <span>🤖 AI Picks</span>
-        <span>Orders</span>
-        <span>Contact</span>
+       <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+  <span>☰ Home</span>
+</Link>
+<a href="/#categories">Categories</a>
+<a href="/#deals">Today's Deals</a>
+<a href="/#featured">New Arrivals</a>
+<a href="/#featured">Best Sellers</a>
+<a href="/#aipicks">AI Picks</a>
+<a href="/#contact">Contact</a>
     </div>
     </>
     );

@@ -1,20 +1,22 @@
 import { Link } from "react-router-dom";
 type ProductCardProps = {
-image: string;
-name: string;
-price: number;
-rating: number;
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+  rating: number;
 };
 
 function ProductCard({
-image,
-name,
-price,
-
+  id,
+  image,
+  name,
+  price,
+  rating,
 }: ProductCardProps) {
 return (
   <Link
-  to="/product-details"
+  to={`/product-details/${id}`}
   style={{
     textDecoration: "none",
     color: "inherit",
@@ -42,7 +44,7 @@ return (
 
     <h3>{name}</h3>
 
-    <p>⭐⭐⭐⭐⭐</p>
+    <p>⭐⭐⭐⭐⭐ ({rating})</p>
 
     <h2>₹{price}</h2>
 

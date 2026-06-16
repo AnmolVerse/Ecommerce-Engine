@@ -1,3 +1,4 @@
+// import { useParams } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 
 import Home from "../pages/customer/Home";
@@ -13,10 +14,13 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
-      <Route path="/product-details" element={<ProductDetails />} />
+      <Route
+  path="/product-details/:id"
+  element={<ProductDetails />}
+/>
       <Route path="/ai-search" element={<AISearch />} />
       <Route path="/wishlist" element={<Wishlist />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Login/>} />
       <Route path="/cart" element={<Cart />} />
     </Routes>
   );

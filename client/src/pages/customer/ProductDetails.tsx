@@ -1,15 +1,27 @@
+
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 
-import card1 from "../../assets/productDetails/card1.jpg";
-import card2 from "../../assets/productDetails/card2.jpg";
-import card3 from "../../assets/productDetails/card3.jpg";
+import { similarProducts } from "../../data/similarProducts";
 import { productDetails } from "../../data/productDetails";
 function ProductDetails() {
+const { id } = useParams();
 
-const [selectedImage, setSelectedImage] =
-  useState(productDetails.images[0]);
+
+
+const product = productDetails.find(
+  (item) => item.id === Number(id)
+);
+
+const [selectedImage, setSelectedImage] = useState(
+  product?.images[0] || ""
+);
+
+if (!product) {
+  return <h1>Product Not Found</h1>;
+}
 return (
     <>
         <Navbar />
@@ -34,8 +46,12 @@ return (
     src={selectedImage}
     alt="product"
     style={{
-        width: "350px",
+        width: "450px",
+        height : "450px",
         borderRadius: "10px",
+       
+                   
+
 }}
 />
 
@@ -44,26 +60,27 @@ return (
         display: "flex",
         gap: "10px",
         marginTop: "15px",
+        height: "200px",
     }}
 >
     <img
-src={productDetails.images[0]}       onClick={() => setSelectedImage(productDetails.images[0])}
-        style={{ width: "70px", cursor: "pointer" }}
+src={product?.images[0]}
+onClick={() => setSelectedImage(product?.images[0])}
     />
 
     <img
-src={productDetails.images[1]}        onClick={() => setSelectedImage(productDetails.images[1])}
-        style={{ width: "70px", cursor: "pointer" }}
+src={product?.images[1]}
+onClick={() => setSelectedImage(product?.images[1])}
     />
 
     <img
-src={productDetails.images[2]}        onClick={() => setSelectedImage(productDetails.images[2])}
-        style={{ width: "70px", cursor: "pointer" }}
+src={product?.images[2]}
+onClick={() => setSelectedImage(product?.images[2])}
     />
 
     <img
-src={productDetails.images[3]}        onClick={() => setSelectedImage(productDetails.images[3])}
-        style={{ width: "70px", cursor: "pointer" }}
+src={product?.images[3]}
+onClick={() => setSelectedImage(product?.images[3])}
     />
     </div>
 
@@ -71,19 +88,21 @@ src={productDetails.images[3]}        onClick={() => setSelectedImage(productDet
 
         {/* Product Information */}
 
-        <div style={{ maxWidth: "500px" }}>
-            <h1>{productDetails.name}</h1>
+        <div style={{ maxWidth: "800px",
+          fontSize:"20px",
+         }}>
+            <h1>{product?.name}</h1>
 
-            <p style={{ fontSize: "20px", color: "gold" }}>
-            ⭐⭐⭐⭐⭐ ({productDetails.rating})
+            <p style={{ fontSize: "30px", color: "gold" }}>
+            ⭐⭐⭐⭐⭐ ({product?.rating})
             </p>
 
             <h2 style={{ color: "#ff9900" }}>
-            ₹{productDetails.price}
+            ₹{product?.price}
             </h2>
 
             <p>
-            {productDetails.description}
+            {product?.description}
             </p>
             
             <button
@@ -117,16 +136,17 @@ src={productDetails.images[3]}        onClick={() => setSelectedImage(productDet
     style={{
     marginTop: "25px",
     lineHeight: "1.8",
+    fontSize:"20px",
     }}
 >
     <h3>Product Details</h3>
 
-    <p><strong>Brand:</strong> {productDetails.brand}</p>
+    <p><strong>Brand:</strong> {product?.brand}</p>
 
-<p><strong>Category:</strong> {productDetails.category}</p>
-<p><strong>Availability:</strong> {productDetails.availability}</p>
-<p><strong>Free Delivery:</strong> {productDetails.delivery}</p>
-<p><strong>Return Policy:</strong> {productDetails.returnPolicy}</p></div>
+<p><strong>Category:</strong> {product?.category}</p>
+<p><strong>Availability:</strong> {product?.availability}</p>
+<p><strong>Free Delivery:</strong> {product?.delivery}</p>
+<p><strong>Return Policy:</strong> {product?.returnPolicy}</p></div>
         </div>
     </div>
 <div
@@ -146,125 +166,48 @@ src={productDetails.images[3]}        onClick={() => setSelectedImage(productDet
       marginTop: "30px",
     }}
   >
-    {/* Card 1 */}
-
-    <div
+   {similarProducts.map((item) => (
+  <div
+    key={item.id}
+    style={{
+      width: "220px",
+      backgroundColor: "white",
+      padding: "15px",
+      borderRadius: "10px",
+      boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+    }}
+  >
+    <img
+      src={item.image}
+      alt={item.name}
       style={{
-        width: "220px",
-        backgroundColor: "white",
-        padding: "15px",
-        borderRadius: "10px",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+        width: "100%",
+        height: "220px",
+        objectFit: "cover",
+      }}
+    />
+
+    <h3>{item.name}</h3>
+
+    <p>⭐⭐⭐⭐⭐ ({item.rating})</p>
+
+    <h2>₹{item.price}</h2>
+
+    <button
+      style={{
+        backgroundColor: "#ff9900",
+        color: "white",
+        border: "none",
+        padding: "10px 20px",
+        borderRadius: "5px",
+        cursor: "pointer",
       }}
     >
-      <img
-        src={card1}
-        style={{
-          width: "100%",
-          height: "220px",
-          objectFit: "cover",
-        }}
-      />
-
-      <h3>Gaming Headset</h3>
-
-      <p>⭐⭐⭐⭐⭐</p>
-
-      <h2>₹2,499</h2>
-
-      <button
-        style={{
-          backgroundColor: "#ff9900",
-          color: "white",
-          border: "none",
-          padding: "10px 20px",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        View
-      </button>
-    </div>
-
-    {/* Card 2 */}
-
-    <div
-      style={{
-        width: "220px",
-        backgroundColor: "white",
-        padding: "15px",
-        borderRadius: "10px",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
-      }}
-    >
-      <img
-        src={card2}
-        style={{
-          width: "100%",
-          height: "240px",
-          objectFit: "cover",
-        }}
-      />
-
-      <h3>Smart Watch</h3>
-
-      <p>⭐⭐⭐⭐⭐</p>
-
-      <h2>₹1,999</h2>
-
-      <button
-        style={{
-          backgroundColor: "#ff9900",
-          color: "white",
-          border: "none",
-          padding: "10px 20px",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        View
-      </button>
-    </div>
-
-    {/* Card 3 */}
-
-    <div
-      style={{
-        width: "220px",
-        backgroundColor: "white",
-        padding: "15px",
-        borderRadius: "10px",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
-      }}
-    >
-      <img
-        src={card3}
-        style={{
-          width: "100%",
-          height: "270px",
-          objectFit: "cover",
-        }}
-      />
-
-      <h3>Speaker</h3>
-
-      <p>⭐⭐⭐⭐⭐</p>
-
-      <h2>₹3,499</h2>
-
-      <button
-        style={{
-          backgroundColor: "#ff9900",
-          color: "white",
-          border: "none",
-          padding: "10px 20px",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        View
-      </button>
-    </div>
+      View
+    </button>
+  </div>
+))}
+    
   </div>
 </div>
 
