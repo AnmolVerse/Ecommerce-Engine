@@ -2,7 +2,7 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 function Cart() {
   const navigate = useNavigate();
  const {
@@ -118,20 +118,43 @@ function Cart() {
   <p>⭐ {item.rating}</p>
 </div>
 
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  style={{
-                    marginLeft: "auto",
-                    backgroundColor: "red",
-                    color: "white",
-                    border: "none",
-                    padding: "10px 15px",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                  }}
-                >
-                  Remove
-                </button>
+               <div
+  style={{
+    marginLeft: "auto",
+    display: "flex",
+    gap: "15px",
+    alignItems: "center",
+  }}
+>
+  <Link to={`/product-details/${item.id}`}>
+    <button
+      style={{
+        backgroundColor: "#190463",
+        color: "white",
+        border: "none",
+        padding: "10px 15px",
+        borderRadius: "5px",
+        cursor: "pointer",
+      }}
+    >
+      View Product
+    </button>
+  </Link>
+
+  <button
+    onClick={() => removeFromCart(item.id)}
+    style={{
+      backgroundColor: "#ff3333",
+      color: "white",
+      border: "none",
+      padding: "10px 15px",
+      borderRadius: "5px",
+      cursor: "pointer",
+    }}
+  >
+    Remove
+  </button>
+</div>
               </div>
             ))}
            <div

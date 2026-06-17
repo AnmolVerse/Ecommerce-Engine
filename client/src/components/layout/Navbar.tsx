@@ -2,7 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 function Navbar() {
+  const { wishlistItems } = useWishlist();
   const { cartItems } = useCart();
   const [search, setSearch] = useState("");
 const navigate = useNavigate();
@@ -91,7 +93,9 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     textDecoration: "none",
     color: "inherit",
   }}
-> <span>❤️ Wishlist</span></Link>
+> <span>
+  ❤️ Wishlist ({wishlistItems.length})
+</span></Link>
         <Link
   to="/cart"
   style={{

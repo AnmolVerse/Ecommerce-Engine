@@ -7,14 +7,31 @@ import Footer from "../../components/layout/Footer";
 import Button from "../../components/common/Button";
 import { similarProducts } from "../../data/similarProducts";
 import { productDetails } from "../../data/productDetails";
+import { useWishlist } from "../../context/WishlistContext";
+
 function ProductDetails() {
+
 const { id } = useParams();
-const [isWishlisted, setIsWishlisted] = useState(false);
+
+const {
+  wishlistItems,
+  addToWishlist,
+  removeFromWishlist,
+} = useWishlist();
+
 const { addToCart } = useCart();
 
 const product = productDetails.find(
   (item) => item.id === Number(id)
 );
+
+const isWishlisted = wishlistItems.some(
+  (item) => item.id === product?.id
+);
+const [showWishlistPopup, setShowWishlistPopup] = useState(false);
+
+
+
 
 const [selectedImage, setSelectedImage] = useState(
   product?.images[0] || ""
@@ -104,16 +121,32 @@ onClick={() => setSelectedImage(product?.images[3])}
   <h1>{product?.name}</h1>
 
   <span
-    onClick={() => setIsWishlisted(!isWishlisted)}
-    style={{
-      fontSize: "32px",
-      cursor: "pointer",
-      userSelect: "none",
-      color:"black",
-      //  backgroundColor: "black",
-    }}
+   onClick={() => {
+ if (isWishlisted) {
+  removeFromWishlist(product.id);
+} else {
+  addToWishlist({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    image: product.images[0],
+    rating: product.rating,
+  });
+
+  setShowWishlistPopup(true);
+
+  setTimeout(() => {
+    setShowWishlistPopup(false);
+  }, 2000);
+}
+}}
+ style={{
+    cursor: "pointer",
+    fontSize: "35px",
+    userSelect: "none",
+  }}
   >
-    {isWishlisted ? "♥️" : "ㅤ♡"}
+    {isWishlisted ? "♥️" : "♡"}
   </span>
 </div>
 
@@ -267,6 +300,24 @@ onClick={() => setSelectedImage(product?.images[3])}
     
   </div>
 </div>
+{showWishlistPopup && (
+  <div
+    style={{
+      position: "fixed",
+      top: "80px",
+      right: "20px",
+      backgroundColor: "#2e8a07",
+      color: "white",
+      padding: "15px 25px",
+      borderRadius: "8px",
+      fontWeight: "bold",
+      boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+      zIndex: 1000,
+    }}
+  >
+    ❤️ Product Added To Wishlist!
+  </div>
+)}
 {showPopup && (
   <div
     style={{
