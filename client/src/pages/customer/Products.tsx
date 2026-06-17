@@ -36,7 +36,21 @@ const filteredProducts = allProducts.filter((product) =>
         <h1>🛒 All Products</h1>
 
        
-        <p> : {search}</p>
+        <p
+  style={{
+    fontSize: "18px",
+    marginTop: "10px",
+    color: "#555",
+  }}
+>
+  Showing {filteredProducts.length} Product
+  {filteredProducts.length !== 1 ? "s" : ""}
+</p>
+{search && (
+  <h3>
+    Search Results for "{search}"
+  </h3>
+)}
         {filteredProducts.length > 0 ? (
   <div
     style={{

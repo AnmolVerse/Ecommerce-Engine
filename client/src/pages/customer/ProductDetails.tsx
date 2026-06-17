@@ -1,15 +1,16 @@
-
+import { useCart } from "../../context/CartContext";
 import { useState } from "react";
+
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
-
+import Button from "../../components/common/Button";
 import { similarProducts } from "../../data/similarProducts";
 import { productDetails } from "../../data/productDetails";
 function ProductDetails() {
 const { id } = useParams();
-
-
+const [isWishlisted, setIsWishlisted] = useState(false);
+const { addToCart } = useCart();
 
 const product = productDetails.find(
   (item) => item.id === Number(id)
@@ -18,7 +19,7 @@ const product = productDetails.find(
 const [selectedImage, setSelectedImage] = useState(
   product?.images[0] || ""
 );
-
+const [showPopup, setShowPopup] = useState(false);
 if (!product) {
   return <h1>Product Not Found</h1>;
 }
@@ -91,7 +92,30 @@ onClick={() => setSelectedImage(product?.images[3])}
         <div style={{ maxWidth: "800px",
           fontSize:"20px",
          }}>
-            <h1>{product?.name}</h1>
+            <div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "15px",
+    marginBottom: "10px",
+   
+  }}
+>
+  <h1>{product?.name}</h1>
+
+  <span
+    onClick={() => setIsWishlisted(!isWishlisted)}
+    style={{
+      fontSize: "32px",
+      cursor: "pointer",
+      userSelect: "none",
+      color:"black",
+      //  backgroundColor: "black",
+    }}
+  >
+    {isWishlisted ? "♥️" : "ㅤ♡"}
+  </span>
+</div>
 
             <p style={{ fontSize: "30px", color: "gold" }}>
             ⭐⭐⭐⭐⭐ ({product?.rating})
@@ -104,8 +128,36 @@ onClick={() => setSelectedImage(product?.images[3])}
             <p>
             {product?.description}
             </p>
-            
-            <button
+
+            <div
+  style={{
+    display: "flex",
+    gap: "15px",
+    marginTop: "15px",
+  }}
+>
+            <Button
+  text="Add to Cart"
+ onClick={() => {
+ addToCart({
+  id: product.id,
+  name: product.name,
+  price: product.price,
+  image: product.images[0],
+  rating: product.rating,
+ 
+});
+  
+
+  setShowPopup(true);
+
+  setTimeout(() => {
+    setShowPopup(false);
+  }, 2000);
+}}
+/>
+
+            {/* <button
             style={{
                 backgroundColor: "#ff9900",
                 color: "white",
@@ -118,9 +170,9 @@ onClick={() => setSelectedImage(product?.images[3])}
         >
             
             Add to Cart
-        </button>
+        </button> */}
 
-        <button
+        {/* <button
             style={{
                 backgroundColor: "#ff3333",
                 color: "white",
@@ -131,7 +183,12 @@ onClick={() => setSelectedImage(product?.images[3])}
             }}
 >
             Buy Now
-            </button>
+            </button> */}
+            <Button
+  text="Buy Now"
+  bgColor="#ff3333"
+
+/></div>
             <div
     style={{
     marginTop: "25px",
@@ -210,6 +267,25 @@ onClick={() => setSelectedImage(product?.images[3])}
     
   </div>
 </div>
+{showPopup && (
+  <div
+    style={{
+      position: "fixed",
+      top: "20px",
+      right: "20px",
+      backgroundColor: "#28a745",
+      color: "white",
+      padding: "15px 25px",
+      borderRadius: "8px",
+      fontWeight: "bold",
+      boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+      zIndex: 1000,
+    }}
+  >
+    ✅ Product Added To Cart!
+  </div>
+)}
+
 
 <Footer />
 
