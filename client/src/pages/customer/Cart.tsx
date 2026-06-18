@@ -191,7 +191,7 @@ function Cart() {
     >
       Total : ₹{totalPrice}
     </h1>
-
+<Link to="/checkout">
     <button
       onClick={() => navigate("/checkout")}
       style={{
@@ -207,7 +207,7 @@ function Cart() {
       }}
     >
       Proceed to Checkout
-    </button>
+    </button></Link>
   </div>
 </div>
           </>

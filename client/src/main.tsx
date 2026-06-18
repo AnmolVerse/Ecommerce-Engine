@@ -4,11 +4,16 @@ import "./index.css";
 import App from "./App";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
+import { OrderProvider } from "./context/OrderContext";
+
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
      <WishlistProvider>
       <CartProvider>
-        <App />
+        <OrderProvider>
+            <App />
+          </OrderProvider>
       </CartProvider>
     </WishlistProvider>
   </StrictMode>

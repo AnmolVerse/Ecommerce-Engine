@@ -22,6 +22,7 @@ interface CartContextType {
   removeFromCart: (id: number) => void;
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<
@@ -110,16 +111,20 @@ export function CartProvider({
         .filter((item) => item.quantity > 0)
     );
   };
-
+   
+    const clearCart = () => {
+  setCartItems([]);
+};
   return (
     <CartContext.Provider
-      value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        increaseQuantity,
-        decreaseQuantity,
-      }}
+     value={{
+  cartItems,
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+}}
     >
       {children}
     </CartContext.Provider>
