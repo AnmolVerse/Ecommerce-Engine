@@ -3,7 +3,10 @@ import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
+
 function Navbar() {
+  const isLoggedIn =
+  localStorage.getItem("isLoggedIn") === "true";
   const { wishlistItems } = useWishlist();
   const { cartItems } = useCart();
   const [search, setSearch] = useState("");
@@ -105,13 +108,30 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 ><span>
   🛒 Cart ({cartItems.length})
 </span></Link>
-       <Link
-  to="/login"
-  style={{
-    textDecoration: "none",
-    color: "inherit",
-  }}
-> <span>👤 Login</span></Link>
+{isLoggedIn ? (
+  <Link
+    to="/profile"
+    style={{
+      textDecoration: "none",
+      color: "white",
+      fontWeight: "bold",
+    }}
+  >
+    👤 Profile
+  </Link>
+) : (
+  <Link
+    to="/login"
+    style={{
+      textDecoration: "none",
+      color: "white",
+      fontWeight: "bold",
+    }}
+  >
+    👤 Login
+  </Link>
+)}
+
     </div>
     </nav>
 

@@ -11,6 +11,8 @@ import { useWishlist } from "../../context/WishlistContext";
 
 function ProductDetails() {
 
+  
+
 const { id } = useParams();
 
 const {
@@ -24,6 +26,29 @@ const { addToCart } = useCart();
 const product = productDetails.find(
   (item) => item.id === Number(id)
 );
+if (product) {
+  const viewedProducts = JSON.parse(
+    localStorage.getItem("recentlyViewed") || "[]"
+  );
+
+  const exists = viewedProducts.find(
+    (item: any) => item.id === product.id
+  );
+
+  if (!exists) {
+    viewedProducts.unshift({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+    });
+
+    localStorage.setItem(
+      "recentlyViewed",
+      JSON.stringify(viewedProducts.slice(0, 5))
+    );
+  }
+}
 
 const isWishlisted = wishlistItems.some(
   (item) => item.id === product?.id

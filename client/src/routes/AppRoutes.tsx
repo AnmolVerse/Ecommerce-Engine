@@ -13,6 +13,7 @@ import Checkout from "../pages/customer/Checkout";
 import OrderSuccess from "../pages/customer/OrderSuccess"; 
 import Orders from "../pages/customer/Orders";
 import OrderDetails from "../pages/customer/OrderDetails";
+import Profile from "../pages/customer/Profile";
 
 function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ function AppRoutes() {
   path="/product-details/:id"
   element={<ProductDetails />}
 />
+<Route path="/profile" element={<Profile />} />
 <Route
   path="/order-details/:id"
   element={<OrderDetails />}
