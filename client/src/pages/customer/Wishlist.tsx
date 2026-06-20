@@ -27,23 +27,24 @@ const { addToCart } = useCart();
           <div
   style={{
     textAlign: "center",
-    marginTop: "100px",
+    padding: "80px 20px",
   }}
 >
-  <h1 style={{ color: "#ff4d6d" ,
-    fontSize:"20px",
-  }}>
-    ❤️ Your Wishlist is Empty
-  </h1>
+  <h1>❤️</h1>
 
-  <p
-    style={{
-      color: "#666",
-      fontSize: "18px",
-    }}
-  >
-    Browse products and save your favorites.
+  <h2>Your Wishlist is Empty</h2>
+
+  <p>
+    Save products you love and
+    view them later.
   </p>
+
+  <button
+    onClick={() => navigate("/products")}
+    style={buttonStyle}
+  >
+    Browse Products
+  </button>
 </div>
         ) : (
           wishlistItems.map((item) => (
@@ -171,4 +172,13 @@ const { addToCart } = useCart();
   );
 }
 
+const buttonStyle = {
+  padding: "12px 25px",
+  backgroundColor: "#ff9900",
+  color: "white",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+  fontWeight: "bold",
+};
 export default Wishlist;

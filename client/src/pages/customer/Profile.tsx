@@ -23,7 +23,31 @@ function Profile() {
 //     ? orders[orders.length - 1]
 //     : null;
     const [isEditing, setIsEditing] = useState(false);
+const [profileImage, setProfileImage] = useState(
+  localStorage.getItem("profileImage") || ""
+);
+const handleImageUpload = (
+  e: React.ChangeEvent<HTMLInputElement>
+) => {
+  const file = e.target.files?.[0];
 
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    const image = reader.result as string;
+
+    setProfileImage(image);
+
+    localStorage.setItem(
+      "profileImage",
+      image
+    );
+  };
+
+  reader.readAsDataURL(file);
+};
 const [name, setName] = useState(
   localStorage.getItem("profileName") ||
     "Kritika Bendwar"
@@ -96,6 +120,40 @@ const [pincode, setPincode] = useState(
               fontSize:"18px",
             }}
           >
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: "20px",
+  }}
+
+>
+  <img
+    src={
+      profileImage ||
+      "https://via.placeholder.com/120"
+    }
+    alt="Profile"
+style={{
+  width: "120px",
+  height: "120px",
+  borderRadius: "50%",
+  objectFit: "cover",
+  border: "3px solid #ff9900",
+}}
+  />
+
+  <input
+    type="file"
+    accept="image/*"
+    onChange={handleImageUpload}
+ style={{
+  marginTop: "15px",
+  width: "220px",
+}}
+  />
+</div>
             <h2 style={{fontSize:"20px",
                 fontWeight:"bolder",
             }}>Personal Information</h2>

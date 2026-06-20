@@ -21,7 +21,28 @@ function Orders() {
         }}>📦 My Orders</h1>
 
         {orders.length === 0 ? (
-          <h2>No Orders Yet</h2>
+          <div
+  style={{
+    textAlign: "center",
+    padding: "80px 20px",
+  }}
+>
+  <h1>📦</h1>
+
+  <h2>No Orders Yet</h2>
+
+  <p>
+    Place your first order and
+    track it here.
+  </p>
+
+  <button
+    onClick={() => navigate("/products")}
+    style={buttonStyle}
+  >
+    Shop Now
+  </button>
+</div>
         ) : (
           orders.map((order) => (
             <div
@@ -132,5 +153,13 @@ function Orders() {
     </>
   );
 }
-
+const buttonStyle = {
+  padding: "12px 25px",
+  backgroundColor: "#ff9900",
+  color: "white",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+  fontWeight: "bold",
+};
 export default Orders;

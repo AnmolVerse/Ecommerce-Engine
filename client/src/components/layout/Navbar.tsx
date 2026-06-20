@@ -10,6 +10,7 @@ function Navbar() {
   const { wishlistItems } = useWishlist();
   const { cartItems } = useCart();
   const [search, setSearch] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
 const navigate = useNavigate();
 
 const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -109,29 +110,81 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
   🛒 Cart ({cartItems.length})
 </span></Link>
 {isLoggedIn ? (
-  <Link
-    to="/profile"
+  <div
     style={{
-      textDecoration: "none",
-      color: "white",
-      fontWeight: "bold",
+      position: "relative",
+      cursor: "pointer",
     }}
   >
-    👤 Profile
-  </Link>
+    <span
+      onClick={() =>
+        setShowMenu(!showMenu)
+      }
+    >
+      👤 {localStorage.getItem("profileName") || "User"} ▼
+    </span>
+
+    {showMenu && (
+      <div
+        style={{
+          position: "absolute",
+          top: "35px",
+          right: 0,
+          backgroundColor: "white",
+          color: "black",
+          borderRadius: "8px",
+          minWidth: "150px",
+          boxShadow:
+            "0 2px 10px rgba(0,0,0,0.2)",
+          zIndex: 1000,
+        }}
+      >
+        <div
+          onClick={() =>
+            navigate("/profile")
+          }
+          style={menuItemStyle}
+        >
+          👤 Profile
+        </div>
+
+        <div
+          onClick={() =>
+            navigate("/orders")
+          }
+          style={menuItemStyle}
+        >
+          📦 Orders
+        </div>
+
+        <div
+          onClick={() => {
+            localStorage.removeItem(
+              "isLoggedIn"
+            );
+
+            navigate("/login");
+
+            window.location.reload();
+          }}
+          style={menuItemStyle}
+        >
+          🚪 Logout
+        </div>
+      </div>
+    )}
+  </div>
 ) : (
   <Link
     to="/login"
     style={{
-      textDecoration: "none",
       color: "white",
-      fontWeight: "bold",
+      textDecoration: "none",
     }}
   >
     👤 Login
   </Link>
 )}
-
     </div>
     </nav>
 
@@ -159,5 +212,11 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     </>
     );
 }
+
+const menuItemStyle = {
+  padding: "12px",
+  cursor: "pointer",
+  borderBottom: "1px solid #eee",
+};
 
 export default Navbar;

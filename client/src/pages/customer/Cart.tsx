@@ -30,7 +30,28 @@ function Cart() {
         <h1>🛒 My Cart</h1>
 
         {cartItems.length === 0 ? (
-          <h2>Your Cart is Empty</h2>
+          <div
+  style={{
+    textAlign: "center",
+    padding: "80px 20px",
+  }}
+>
+  <h1>🛒</h1>
+
+  <h2>Your Cart is Empty</h2>
+
+  <p>
+    Looks like you haven't added
+    anything yet.
+  </p>
+
+  <button
+    onClick={() => navigate("/products")}
+    style={buttonStyle}
+  >
+    Start Shopping
+  </button>
+</div>
         ) : (
           <>
             {cartItems.map((item) => (
@@ -218,5 +239,13 @@ function Cart() {
     </>
   );
 }
-
+const buttonStyle = {
+  padding: "12px 25px",
+  backgroundColor: "#ff9900",
+  color: "white",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+  fontWeight: "bold",
+};
 export default Cart;

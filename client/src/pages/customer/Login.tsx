@@ -1,13 +1,41 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
-  const navigate = useNavigate();
+  const [showForgot, setShowForgot] =
+  useState(false);
 
-  const handleLogin = () => {
-    localStorage.setItem("isLoggedIn", "true");
+const [resetEmail, setResetEmail] =
+  useState("");
+  const navigate = useNavigate();
+const [showPassword, setShowPassword] =
+  useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+ const handleLogin = () => {
+  const savedEmail =
+    localStorage.getItem("userEmail");
+
+  const savedPassword =
+    localStorage.getItem("userPassword");
+
+  if (
+    email === savedEmail &&
+    password === savedPassword
+  ) {
+    localStorage.setItem(
+      "isLoggedIn",
+      "true"
+    );
+
+    alert("Login Successful");
+
     navigate("/");
-    window.location.reload();
-  };
+  } else {
+    alert("Invalid Email or Password");
+  }
+};
 
   return (
     <div
@@ -16,28 +44,149 @@ function Login() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: "column",
-        gap: "20px",
+        backgroundColor: "#f5f5f5",
       }}
     >
-      <h1>Login Page</h1>
-
-      <button
-        onClick={handleLogin}
+      <div
         style={{
-          padding: "12px 25px",
-          backgroundColor: "#ff9900",
-          color: "white",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer",
-          fontWeight: "bold",
+          width: "400px",
+          backgroundColor: "white",
+          padding: "30px",
+          borderRadius: "12px",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
         }}
       >
-        Login
-      </button>
+        <h1 style={{ textAlign: "center" }}>
+          Login
+        </h1>
+
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
+          style={inputStyle}
+        />
+
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) =>
+            setPassword(e.target.value)
+          }
+          style={inputStyle}
+        />
+        <button
+  onClick={() =>
+    setShowPassword(!showPassword)
+  }
+>
+  {showPassword
+    ? "Hide Password"
+    : "Show Password"}
+</button>
+        <button
+          onClick={handleLogin}
+          style={buttonStyle}
+        >
+          Login
+        </button>
+<p
+  style={{
+    textAlign: "center",
+    cursor: "pointer",
+    color: "#ff9900",
+    marginTop: "10px",
+  }}
+  onClick={() =>
+    setShowForgot(!showForgot)
+  }
+>
+  Forgot Password?
+</p>
+{showForgot && (
+  <div
+    style={{
+      marginTop: "15px",
+    }}
+  >
+    <input
+      type="email"
+      placeholder="Enter Registered Email"
+      value={resetEmail}
+      onChange={(e) =>
+        setResetEmail(e.target.value)
+      }
+      style={inputStyle}
+    />
+
+    <button
+      style={{
+        width: "100%",
+        padding: "10px",
+        backgroundColor: "#28a745",
+        color: "white",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+      }}
+      onClick={() => {
+        const savedEmail =
+          localStorage.getItem("userEmail");
+
+        const savedPassword =
+          localStorage.getItem("userPassword");
+
+        if (resetEmail === savedEmail) {
+          alert(
+            `Your Password is: ${savedPassword}`
+          );
+        } else {
+          alert("Email Not Found");
+        }
+      }}
+    >
+      Recover Password
+    </button>
+  </div>
+)}
+        <p
+          style={{
+            textAlign: "center",
+            marginTop: "15px",
+          }}
+        >
+          Don't have an account?{" "}
+          <Link to="/register">
+            Register
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }
+
+const inputStyle = {
+  width: "100%",
+  padding: "12px",
+  marginTop: "10px",
+  border: "1px solid #ccc",
+  borderRadius: "6px",
+};
+
+const buttonStyle = {
+  width: "100%",
+  padding: "12px",
+  marginTop: "20px",
+  backgroundColor: "#ff9900",
+  color: "white",
+  border: "none",
+  borderRadius: "6px",
+  cursor: "pointer",
+  fontWeight: "bold",
+};
 
 export default Login;

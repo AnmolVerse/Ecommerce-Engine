@@ -8,12 +8,13 @@ import Cart from "../pages/customer/Cart";
 import Wishlist from "../pages/customer/Wishlist";
 import Login from "../pages/customer/Login";
 import AISearch from "../pages/customer/AISearch";
-
+import ProtectedRoute from "./ProtectedRoute";
 import Checkout from "../pages/customer/Checkout";
 import OrderSuccess from "../pages/customer/OrderSuccess"; 
 import Orders from "../pages/customer/Orders";
 import OrderDetails from "../pages/customer/OrderDetails";
 import Profile from "../pages/customer/Profile";
+import Register from "../pages/customer/Register";
 
 function AppRoutes() {
   return (
@@ -24,7 +25,15 @@ function AppRoutes() {
   path="/product-details/:id"
   element={<ProductDetails />}
 />
-<Route path="/profile" element={<Profile />} />
+<Route
+  path="/profile"
+  element={
+    <ProtectedRoute>
+      <Profile />
+    </ProtectedRoute>
+  }
+/>
+<Route path="/register" element={<Register />} />
 <Route
   path="/order-details/:id"
   element={<OrderDetails />}
@@ -37,9 +46,23 @@ function AppRoutes() {
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/login" element={<Login/>} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
+     <Route
+  path="/checkout"
+  element={
+    <ProtectedRoute>
+      <Checkout />
+    </ProtectedRoute>
+  }
+/>
       <Route path="/order-success" element={<OrderSuccess />} />
-      <Route path="/orders" element={<Orders />} />
+      <Route
+  path="/orders"
+  element={
+    <ProtectedRoute>
+      <Orders />
+    </ProtectedRoute>
+  }
+/>
     </Routes>
   );
 }
