@@ -1,6 +1,6 @@
 import { useCart } from "../../context/CartContext";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
@@ -22,6 +22,7 @@ const {
 } = useWishlist();
 
 const { addToCart } = useCart();
+const navigate = useNavigate();
 
 const product = productDetails.find(
   (item) => item.id === Number(id)
@@ -242,11 +243,22 @@ onClick={() => setSelectedImage(product?.images[3])}
 >
             Buy Now
             </button> */}
-            <Button
+  <Button
   text="Buy Now"
   bgColor="#ff3333"
+  onClick={() => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+      rating: product.rating,
+    });
 
-/></div>
+    navigate("/checkout");
+  }}
+/>
+</div>
             <div
     style={{
     marginTop: "25px",

@@ -1,6 +1,9 @@
 import { aiProducts } from "../../data/aiProducts";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 function AIRecommended() {
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -28,10 +31,15 @@ function AIRecommended() {
         }}
       >
         {aiProducts.map((product) => (
-          <div
-            key={product.id}
-            style={productCard}
-          >
+<Link
+  key={product.id}
+  to={`/product-details/${product.id}`}
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
+<div style={productCard}>
             <img
               src={product.image}
               alt={product.name}
@@ -48,11 +56,26 @@ function AIRecommended() {
             <p>⭐⭐⭐⭐⭐ ({product.rating})</p>
 
             <h2>₹{product.price.toLocaleString()}</h2>
+<button
+  style={buttonStyle}
+  onClick={(e) => {
+    e.preventDefault();
 
-            <button style={buttonStyle}>
-              Buy Now
-            </button>
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      rating: product.rating,
+    });
+
+    navigate("/checkout");
+  }}
+>
+  Buy Now
+</button>
           </div>
+</Link>
         ))}
       </div>
     </div>
