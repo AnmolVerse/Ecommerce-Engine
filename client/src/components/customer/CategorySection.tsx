@@ -2,6 +2,7 @@ import electronics from "../../assets/categories/Electronic.jpg";
 import fashion from "../../assets/categories/Fashion.jpg";
 import home from "../../assets/categories/Home.jpg";
 import beauty from "../../assets/categories/Beauty.jpg";
+import { Link } from "react-router-dom";
 
 function CategorySection() {
 return (
@@ -29,20 +30,26 @@ return (
             gap: "20px",
             flexWrap: "wrap",
         }}>
-        <div style={cardStyle}>
-<img
-    src={electronics}
-    alt="Electronics"
-    style={{
-        width: "100%",
-        height: "150px",
-        objectFit: "cover",
-        borderRadius: "10px",
-    }}/>
-
+<Link
+  to="/electronics"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
+  <div style={cardStyle}>
+    <img src={electronics} />
     <h3>Electronics</h3>
-</div>
-
+  </div>
+</Link>
+{/* fashion */}
+       <Link
+  to="/fashion"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
         <div style={cardStyle}>
             <img
     src={fashion} alt="Fashion"
@@ -53,8 +60,16 @@ return (
         borderRadius: "10px",
     }}/>
             <h3>👕 Fashion</h3>
-        </div>
+        </div></Link>
 
+{/* home */}
+<Link
+  to="/home-category"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
         <div style={cardStyle}>
             <img
     src={home} alt="home"
@@ -65,8 +80,17 @@ return (
         borderRadius: "10px",
     }}/>
             <h3>🏠 Home</h3>
-        </div>
+        </div></Link>
 
+        {/* beauty */}
+
+<Link
+  to="/beauty"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
         <div style={cardStyle}>
         <img
     src={beauty} alt="Beauty"
@@ -77,7 +101,7 @@ return (
         borderRadius: "10px",
     }}/>
             <h3>💄 Beauty</h3>
-        </div>
+        </div></Link>
         </div>
     </div>
     );

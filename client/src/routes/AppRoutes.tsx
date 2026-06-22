@@ -15,6 +15,10 @@ import Orders from "../pages/customer/Orders";
 import OrderDetails from "../pages/customer/OrderDetails";
 import Profile from "../pages/customer/Profile";
 import Register from "../pages/customer/Register";
+import Electronics from "../pages/customer/Electronics";
+import Fashion from "../pages/customer/Fashion";
+import Beauty from "../pages/customer/Beauty";
+import HomeCategory from "../pages/customer/HomeCategory";
 
 function AppRoutes() {
   return (
@@ -41,6 +45,25 @@ function AppRoutes() {
 <Route
   path="/track-order/:id"
   element={<TrackOrder />}
+/>
+<Route
+  path="/electronics"
+  element={<Electronics />}
+/>
+
+<Route
+  path="/fashion"
+  element={<Fashion />}
+/>
+
+<Route
+  path="/home-category"
+  element={<HomeCategory />}
+/>
+
+<Route
+  path="/beauty"
+  element={<Beauty />}
 />
       <Route path="/ai-search" element={<AISearch />} />
       <Route path="/wishlist" element={<Wishlist />} />
