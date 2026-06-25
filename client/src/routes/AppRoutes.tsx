@@ -20,9 +20,35 @@ import Fashion from "../pages/customer/Fashion";
 import Beauty from "../pages/customer/Beauty";
 import HomeCategory from "../pages/customer/HomeCategory";
 
+// admin
+import Dashboard from "../pages/admin/Dashboard";
+import Product from "../pages/admin/Product";
+import AddProduct from "../pages/admin/AddProduct";
+import EditProduct from "../pages/admin/EditProduct";
+
+
 function AppRoutes() {
   return (
-    <Routes>
+   
+    <Routes> 
+      {/* admin */}
+      
+         <Route
+  path="/admin/dashboard"
+  element={<Dashboard />}
+/>
+<Route path="/admin/products" element={<Product />} />
+<Route path="/admin/add-product" element={<AddProduct />} />
+
+<Route path="/admin/edit-product/:id" element={<EditProduct />} />
+
+
+  
+
+
+
+
+  {/* customer */}
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
       <Route
