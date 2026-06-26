@@ -2,15 +2,18 @@ import AdminSidebar from "../../components/admin/AdminSidebar";
 import AdminNavbar from "../../components/admin/AdminNavbar";
 import DashboardCard from "../../components/admin/DashboardCard";
 
+
 function Dashboard() {
+ 
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        background: "#f5f7fb",
-      }}
-    >
+  <div
+  style={{
+    marginLeft: "220px",
+    flex: 1,
+    background: "#f4f7fc",
+    minHeight: "100vh",
+  }}
+>
       {/* Sidebar */}
       <AdminSidebar />
 

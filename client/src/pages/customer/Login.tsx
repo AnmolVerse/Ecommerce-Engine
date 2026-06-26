@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
+  const [role, setRole] = useState("customer");
   const [showForgot, setShowForgot] =
   useState(false);
 
@@ -13,27 +14,13 @@ const [showPassword, setShowPassword] =
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
- const handleLogin = () => {
-  const savedEmail =
-    localStorage.getItem("userEmail");
+const handleLogin = (e: React.FormEvent) => {
+  e.preventDefault();
 
-  const savedPassword =
-    localStorage.getItem("userPassword");
-
-  if (
-    email === savedEmail &&
-    password === savedPassword
-  ) {
-    localStorage.setItem(
-      "isLoggedIn",
-      "true"
-    );
-
-    alert("Login Successful");
-
-    navigate("/");
+  if (role === "admin") {
+    navigate("/admin/dashboard");
   } else {
-    alert("Invalid Email or Password");
+    navigate("/");
   }
 };
 
@@ -88,6 +75,29 @@ const [showPassword, setShowPassword] =
     ? "Hide Password"
     : "Show Password"}
 </button>
+<div className="role-selection">
+
+  <label>
+    <input
+      type="radio"
+      value="customer"
+      checked={role === "customer"}
+      onChange={(e) => setRole(e.target.value)}
+    />
+    Customer
+  </label>
+  </div><div>
+  <label>
+    <input
+      type="radio"
+      value="admin"
+      checked={role === "admin"}
+      onChange={(e) => setRole(e.target.value)}
+    />
+    Admin
+  </label>
+
+</div>
         <button
           onClick={handleLogin}
           style={buttonStyle}

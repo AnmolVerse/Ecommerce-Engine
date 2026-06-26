@@ -1,4 +1,6 @@
 function AdminNavbar() {
+  
+  
   return (
     <div
       style={{
@@ -10,6 +12,8 @@ function AdminNavbar() {
         padding: "0 30px",
         boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
         gap: "30px",
+  
+
       }}
     >
       <h2>Dashboard</h2>

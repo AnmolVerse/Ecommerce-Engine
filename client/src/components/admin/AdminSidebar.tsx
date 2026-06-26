@@ -1,16 +1,25 @@
+import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 function AdminSidebar() {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+  navigate("/login");
+};
+
   return (
     <div
-      style={{
-        // width: "250px",
-        height: "100vh",
-        // backgroundColor: "#1f2937",
-        color: "white",
-        // padding: "20px",
-        backgroundColor: "#111827",
-width: "260px",
-padding: "25px",
-      }}
+    style={{
+  width: "220px",
+  background: "#111827",
+  color: "white",
+  position: "fixed",
+  top: 0,
+  left: 0,
+  height: "100vh",
+  overflowY: "auto",
+}}
+ 
     >
       <h2 style={{
   padding: "12px",
@@ -28,56 +37,78 @@ padding: "25px",
   marginTop: "8px",
   borderRadius: "8px",
   cursor: "pointer",
-}}>📊 Dashboard</p>
+}}>📊 <NavLink to="/admin/dashboard">
+  Dashboard
+</NavLink></p>
 
       <p style={{
   padding: "12px",
   marginTop: "8px",
   borderRadius: "8px",
   cursor: "pointer",
-}}>📦 Products</p>
+}}>📦 <NavLink to="/admin/products">
+  Products
+</NavLink></p>
 
       <p style={{
   padding: "12px",
   marginTop: "8px",
   borderRadius: "8px",
   cursor: "pointer",
-}}>➕ Add Product</p>
+}}><NavLink to="/admin/add-product">
+  Add Product
+</NavLink></p>
 
       <p style={{
   padding: "12px",
   marginTop: "8px",
   borderRadius: "8px",
   cursor: "pointer",
-}}>📋 Orders</p>
+}} ><NavLink to="/admin/order">
+  Orders
+</NavLink></p>
 
       <p style={{
   padding: "12px",
   marginTop: "8px",
   borderRadius: "8px",
   cursor: "pointer",
-}}>📦 Inventory</p>
+}}><NavLink to="/admin/inventory">
+  Inventory
+</NavLink></p>
 
       <p style={{
   padding: "12px",
   marginTop: "8px",
   borderRadius: "8px",
   cursor: "pointer",
-}}>📈 Analytics</p>
+}}><NavLink to="/admin/analytics">
+  Analytics
+</NavLink></p>
 
       <p style={{
   padding: "12px",
   marginTop: "8px",
   borderRadius: "8px",
   cursor: "pointer",
-}}>⚙️ Settings</p>
+}}><NavLink to="/admin/settings">
+  Settings
+</NavLink></p>
 
       <p style={{
   padding: "12px",
   marginTop: "8px",
   borderRadius: "8px",
   cursor: "pointer",
-}}>🚪 Logout</p>
+}}><div
+  onClick={handleLogout}
+  style={{
+    cursor: "pointer",
+  }}
+>
+  🚪 Logout
+</div>
+</p>
     </div>
   );
 }

@@ -25,7 +25,14 @@ function EditProduct() {
   };
 
   return (
-    <div style={{ display: "flex" }}>
+   <div
+  style={{
+    marginLeft: "220px",
+    flex: 1,
+    background: "#f4f7fc",
+    minHeight: "100vh",
+  }}
+>
       <AdminSidebar />
 
       <div

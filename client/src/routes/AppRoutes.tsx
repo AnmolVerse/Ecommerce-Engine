@@ -25,7 +25,10 @@ import Dashboard from "../pages/admin/Dashboard";
 import Product from "../pages/admin/Product";
 import AddProduct from "../pages/admin/AddProduct";
 import EditProduct from "../pages/admin/EditProduct";
-
+import OrdersPage from "../pages/admin/OrdersPage";
+import Inventory from "../pages/admin/Inventory";
+import Analytics from "../pages/admin/Analytics";
+import Settings from "../pages/admin/Settings";
 
 function AppRoutes() {
   return (
@@ -33,17 +36,14 @@ function AppRoutes() {
     <Routes> 
       {/* admin */}
       
-         <Route
-  path="/admin/dashboard"
-  element={<Dashboard />}
-/>
+<Route path="/admin/dashboard" element={<Dashboard />}/>
 <Route path="/admin/products" element={<Product />} />
 <Route path="/admin/add-product" element={<AddProduct />} />
-
 <Route path="/admin/edit-product/:id" element={<EditProduct />} />
-
-
-  
+<Route path="/admin/order" element={<OrdersPage />}/>
+<Route path="/admin/Inventory" element={<Inventory />}/>
+<Route path="/admin/analytics" element={<Analytics />}/>
+  <Route path="/admin/Settings" element={<Settings />}/>
 
 
 
