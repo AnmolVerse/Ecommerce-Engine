@@ -4,6 +4,7 @@ import herosection from "../../assets/herosection.jpg";
 import banner1 from "../../assets/banner1.jpg";
 import banner2 from "../../assets/banner2.jpg";
 import banner3 from "../../assets/banner3.jpg";
+import "./HeroSection.css";
 
 function HeroSection() {
     const banners = [herosection,banner1, banner2, banner3];
@@ -18,29 +19,18 @@ useEffect(() => {
     return () => clearInterval(interval);
 }, []);
 return (
-    <div
-    style={{
-        height: "400px",
-        backgroundImage: `url(${banners[currentBanner]})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "white",
-    }}
-    >
+<div
+className="hero-section"
+style={{
+    backgroundImage: `url(${banners[currentBanner]})`,
+}}
+>
         {/* <img src={herosection} alt="herosection"  width="100%"/> */}
-    <h1 style={{ fontSize: "50px", margin: 0 }}>
+   <h1 className="hero-title">
         Welcome to ShopVerse
     </h1>
 
-    <p
-        style={{
-        fontSize: "22px",
-        marginTop: "20px",
-        }}>
+   <p className="hero-subtitle">
         Smart Shopping Powered by AI
     </p>
 <Link
@@ -49,18 +39,7 @@ return (
     textDecoration: "none",
   }}
 >
-    <button
-        style={{
-        marginTop: "30px",
-        padding: "12px 30px",
-        border: "none",
-        borderRadius: "8px",
-        backgroundColor: "#FF9D00",
-        color: "white",
-        fontSize: "18px",
-        fontWeight: "bold",
-        cursor: "pointer",
-        }}>
+  <button className="hero-button">
         Shop Now
     </button></Link>
     </div>

@@ -1,16 +1,9 @@
 import ProductCard from "../common/ProductCard";
 import { products } from "../../data/products";
+import "../../styles/ProductGrid.css";
 function ProductList() {
 return (
-    <div
-        style={{
-        display: "flex",
-        justifyContent: "space-around",
-        flexWrap: "wrap",
-        gap: "20px",
-        padding: "40px",
-        }}
-    >
+  <div className="product-grid">
         {products.map((product) => (
        <ProductCard
   key={product.id}

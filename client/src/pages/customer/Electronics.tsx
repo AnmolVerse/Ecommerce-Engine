@@ -58,12 +58,14 @@ if (sort === "high") {
     marginTop: "30px",
       }}>
         
+        
 <input
   placeholder="Search Electronics..."
   value={search}
   onChange={(e) => setSearch(e.target.value)}
   style={{
-    width: "300px",
+    width: "100%",
+
     padding: "10px",
     borderRadius: "8px",
     border: "1px solid #ddd",
@@ -96,14 +98,7 @@ if (sort === "high") {
           Featured Electronics
         </h2>
 
-<div
-  style={{
-    display: "flex",
-    gap: "20px",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  }}
->
+<div className="product-grid">
   {filteredProducts.map((product) => (
     <ProductCard
       key={product.id}

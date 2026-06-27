@@ -1,6 +1,7 @@
 import { aiProducts } from "../../data/aiProducts";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import "../../styles/ProductGrid.css";
 function AIRecommended() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
@@ -22,14 +23,7 @@ function AIRecommended() {
         🤖 AI Recommends For You
       </h2>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          gap: "20px",
-          flexWrap: "wrap",
-        }}
-      >
+     <div className="product-grid">
         {aiProducts.map((product) => (
 <Link
   key={product.id}
@@ -39,8 +33,8 @@ function AIRecommended() {
     color: "inherit",
   }}
 >
-<div style={productCard}>
-            <img
+ <div className="product-card">
+              <img
               src={product.image}
               alt={product.name}
               style={{
@@ -82,14 +76,14 @@ function AIRecommended() {
   );
 }
 
-const productCard = {
-  width: "250px",
-  backgroundColor: "white",
-  padding: "15px",
-  borderRadius: "10px",
-  textAlign: "center" as const,
-  boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
-};
+// const productCard = {
+//   width: "250px",
+//   backgroundColor: "white",
+//   padding: "15px",
+//   borderRadius: "10px",
+//   textAlign: "center" as const,
+//   boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+// };
 
 const buttonStyle = {
   backgroundColor: "#f61212",

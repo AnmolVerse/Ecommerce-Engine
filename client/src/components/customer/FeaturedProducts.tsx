@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { featuredProducts } from "../../data/featuredProducts";
-
+// import "./FeaturedProducts.css";
+import "../../styles/ProductGrid.css";
 function FeaturedProducts() {
   return (
     <div
@@ -20,14 +21,7 @@ function FeaturedProducts() {
         Featured Products
       </h2>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          gap: "20px",
-          flexWrap: "wrap",
-        }}
-      >
+     <div className="product-grid">
         {featuredProducts.map((product) => (
           <Link
             key={product.id}
@@ -37,7 +31,7 @@ function FeaturedProducts() {
               color: "inherit",
             }}
           >
-            <div style={productCard}>
+            <div className="product-card">
               <img
                 src={product.image}
                 alt={product.name}
@@ -66,14 +60,14 @@ function FeaturedProducts() {
   );
 }
 
-const productCard = {
-  width: "250px",
-  backgroundColor: "white",
-  padding: "15px",
-  borderRadius: "10px",
-  textAlign: "center" as const,
-  boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
-};
+// const productCard = {
+//   width: "250px",
+//   backgroundColor: "white",
+//   padding: "15px",
+//   borderRadius: "10px",
+//   textAlign: "center" as const,
+//   boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+// };
 
 const buttonStyle = {
   backgroundColor: "#FF9D00",

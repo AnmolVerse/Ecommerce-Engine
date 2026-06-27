@@ -3,6 +3,7 @@ import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
+import "./Navbar.css";
 
 function Navbar() {
   const isLoggedIn =
@@ -20,23 +21,9 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 };
     return (
         <>
-    <nav
-        style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "4px 15px",
-        backgroundColor: "#00043D",
-        
-        }}>
+   <nav className="navbar">
       {/* Logo Section */}
-    <div
-        style={{
-        display: "flex",
-        alignItems: "center",
-        // gap: "0px",
-
-        }}>
+   <div className="logo-section">
         <img src={logo} alt="ShopVerse Logo" width="60" />
 
         <h1
@@ -50,30 +37,17 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
         </h1>
     </div>
      {/* Center */}
-    <input
+<input
+
   type="text"
+  className="search-box"
   placeholder="🔍 Search products..."
   value={search}
   onChange={(e) => setSearch(e.target.value)}
   onKeyDown={handleSearch}
-  style={{
-    width: "500px",
-    padding: "10px",
-    color: "white",
-    borderRadius: "5px",
-    border: "none",
-    outline: "none",
-  }}
 />
       {/* Right Section */}
-    <div
-        style={{
-            display: "flex",
-            gap: "20px",
-            color: "white",
-            fontSize: "18px",
-            fontFamily:"font-serif",
-        }}>
+  <div className="nav-links">
             <Link
   to="/ai-search"
   style={{
@@ -189,16 +163,8 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     </nav>
 
     {/* // 2nd nav--- */}
-    <div
-    style={{
-        display: "flex",
-        gap: "30px",
-        alignItems: "center",
-        padding: "10px 20px",
-        backgroundColor: "#10204F",
-        color: "white",
-        fontWeight: "bold",
-        }}>
+ <div className="category-nav">
+
        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
   <span>☰ Home</span>
 </Link>

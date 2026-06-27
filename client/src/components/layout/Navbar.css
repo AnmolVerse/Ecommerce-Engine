@@ -1,0 +1,100 @@
+/* Main Navbar */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 18px;
+    background:#00043D;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+}
+
+.search-box{
+    width:500px;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    outline:none;
+    color: #ffffff;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    color:white;
+    flex-wrap:wrap;
+}
+
+.category-nav{
+    display:flex;
+    gap:30px;
+    padding:10px 20px;
+    background:#10204F;
+    color:white;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+/* ---------- Tablet ---------- */
+
+@media(max-width:1024px){
+
+.search-box{
+    width:300px;
+    color: #ffffff;
+}
+
+.nav-links{
+    gap:12px;
+    font-size:15px;
+}
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.search-box {
+  width: 500px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #1b2c63;
+  color: white;
+}
+
+.search-box::placeholder {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+.nav-links{
+    width:100%;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.logo-section h1{
+    font-size:18px;
+}
+
+.category-nav{
+    font-size:14px;
+    gap:15px;
+}
+
+}

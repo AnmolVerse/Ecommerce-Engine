@@ -8,6 +8,8 @@ import Deals from "../../components/customer/deals";
 import Reviews from "../../components/customer/Reviews";
 import Newsletter from "../../components/customer/Newsletter";
 import Footer from "../../components/layout/Footer";
+import "./Home.css";
+
 function Home() {
 return (
     

@@ -5,6 +5,7 @@ import ProductCard from "../../components/common/ProductCard";
 import { aiProducts } from "../../data/aiProducts";
 import { products } from "../../data/products";
 import { dealsProducts } from "../../data/dealsProducts";
+import "../../styles/ProductGrid.css";
 
 function Products() {
 const location = useLocation();
@@ -52,15 +53,7 @@ const filteredProducts = allProducts.filter((product) =>
   </h3>
 )}
         {filteredProducts.length > 0 ? (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "space-around",
-      flexWrap: "wrap",
-      gap: "20px",
-      padding: "40px",
-    }}
-  >
+<div className="product-grid">
     {filteredProducts.map((product) => (
       <ProductCard
         key={product.id}

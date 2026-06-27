@@ -93,7 +93,8 @@ function AdminSidebar() {
   cursor: "pointer",
 }}><NavLink to="/admin/settings">
   Settings
-</NavLink></p>
+</NavLink>
+</p>
 
       <p style={{
   padding: "12px",

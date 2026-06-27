@@ -1,3 +1,4 @@
+import "../../styles/ProductGrid.css";
 function Footer() {
 return (
     <footer
@@ -7,14 +8,7 @@ return (
         padding: "40px 30px",
         }}
     >
-    <div
-        style={{
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-            gap: "30px",
-        }}
->
+<div className="product-grid">
         {/* ShopVerse */}
         <div>
             <h2>🛒 ShopVerse</h2>

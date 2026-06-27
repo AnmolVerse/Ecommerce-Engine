@@ -5,6 +5,7 @@ import deal4 from "../../assets/deal/deal4.png";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import "../../styles/ProductGrid.css";
 
 function Deals() {
   const navigate = useNavigate();
@@ -28,17 +29,9 @@ function Deals() {
         🔥 Deals of the Day
       </h2>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          gap: "20px",
-          flexWrap: "wrap",
-        }}
-      >
+    <div className="product-grid">
         {/* Product 1 */}
-        <div style={cardStyle}>
-          <Link
+<div className="product-card">          <Link
             to="/product-details/201"
             style={{
               textDecoration: "none",
@@ -70,8 +63,7 @@ function Deals() {
         </div>
 
         {/* Product 2 */}
-        <div style={cardStyle}>
-          <Link
+<div className="product-card">          <Link
             to="/product-details/202"
             style={{
               textDecoration: "none",
@@ -103,8 +95,7 @@ function Deals() {
         </div>
 
         {/* Product 3 */}
-        <div style={cardStyle}>
-          <Link
+<div className="product-card">          <Link
             to="/product-details/203"
             style={{
               textDecoration: "none",
@@ -139,8 +130,7 @@ function Deals() {
         </div>
 
         {/* Product 4 */}
-        <div style={cardStyle}>
-          <Link
+<div className="product-card">          <Link
             to="/product-details/204"
             style={{
               textDecoration: "none",
@@ -175,14 +165,14 @@ function Deals() {
   );
 }
 
-const cardStyle = {
-  width: "250px",
-  backgroundColor: "white",
-  padding: "15px",
-  borderRadius: "10px",
-  textAlign: "center" as const,
-  boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
-};
+// const cardStyle = {
+//   width: "250px",
+//   backgroundColor: "white",
+//   padding: "15px",
+//   borderRadius: "10px",
+//   textAlign: "center" as const,
+//   boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+// };
 
 const imgStyle = {
   width: "100%",
