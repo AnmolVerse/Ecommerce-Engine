@@ -1,10 +1,20 @@
 import { BrowserRouter } from "react-router-dom";
+import { useState } from "react";
+import SplashScreen from "./components/common/SplashScreen";
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <BrowserRouter>
-      <AppRoutes />
+      {loading ? (
+        <SplashScreen
+          onFinish={() => setLoading(false)}
+        />
+      ) : (
+        <AppRoutes />
+      )}
     </BrowserRouter>
   );
 }
