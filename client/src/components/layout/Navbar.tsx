@@ -3,6 +3,7 @@ import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
+import { motion } from "framer-motion";
 import "./Navbar.css";
 
 function Navbar() {
@@ -21,11 +22,37 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 };
     return (
         <>
-   <nav className="navbar">
-      {/* Logo Section */}
-   <div className="logo-section">
-        <img src={logo} alt="ShopVerse Logo" width="60" />
-
+<motion.nav
+  className="navbar"
+  initial={{ y: -80, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{
+    duration: 0.8,
+    ease: "easeOut",
+  }}
+>      {/* Logo Section */}
+   <motion.div
+  className="logo-section"
+  initial={{ x: -80, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  transition={{
+    delay: 0.3,
+    duration: 0.7,
+  }}
+>
+<motion.img
+  src={logo}
+  alt="ShopVerse Logo"
+  width="60"
+  animate={{
+    y: [0, -4, 0],
+  }}
+  transition={{
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
         <h1
             style={{
             color: "white",
@@ -35,10 +62,15 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
             fontWeight:"800",}}>
             ShopVerse
         </h1>
-    </div>
+   </motion.div>
      {/* Center */}
-<input
-
+<motion.input
+initial={{ opacity: 0, y: -20 }}
+animate={{ opacity: 1, y: 0 }}
+transition={{
+  delay: 0.5,
+  duration: 0.6,
+}}
   type="text"
   className="search-box"
   placeholder="🔍 Search products..."
@@ -47,8 +79,15 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
   onKeyDown={handleSearch}
 />
       {/* Right Section */}
-  <div className="nav-links">
-            <Link
+<motion.div
+  className="nav-links"
+  initial={{ x: 80, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  transition={{
+    delay: 0.7,
+    duration: 0.7,
+  }}>
+{/* >            <Link
   to="/ai-search"
   style={{
     textDecoration: "none",
@@ -64,7 +103,7 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
         fontWeight: "bold",
     }}>
     🤖 AI Search
-    </button></Link>
+    </button></Link> */}
        <Link
   to="/wishlist"
   style={{
@@ -159,12 +198,18 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     👤 Login
   </Link>
 )}
-    </div>
-    </nav>
+</motion.div>   </motion.nav>
 
     {/* // 2nd nav--- */}
- <div className="category-nav">
-
+<motion.div
+  className="category-nav"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{
+    delay: 1,
+    duration: 0.6,
+  }}
+>
        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
   <span>☰ Home</span>
 </Link>
@@ -174,8 +219,7 @@ const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 <a href="/#featured">Best Sellers</a>
 <a href="/#aipicks">AI Picks</a>
 <a href="/#contact">Contact</a>
-    </div>
-    </>
+</motion.div>    </>
     );
 }
 

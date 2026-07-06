@@ -5,6 +5,7 @@ import banner1 from "../../assets/banner1.jpg";
 import banner2 from "../../assets/banner2.jpg";
 import banner3 from "../../assets/banner3.jpg";
 import "./HeroSection.css";
+import { motion } from "framer-motion";
 
 function HeroSection() {
     const banners = [herosection,banner1, banner2, banner3];
@@ -19,30 +20,71 @@ useEffect(() => {
     return () => clearInterval(interval);
 }, []);
 return (
-<div
+<motion.div
 className="hero-section"
 style={{
-    backgroundImage: `url(${banners[currentBanner]})`,
+  backgroundImage: `url(${banners[currentBanner]})`,
+}}
+initial={{ scale: 1.1, opacity: 0 }}
+animate={{ scale: 1, opacity: 1 }}
+transition={{
+  duration: 1.5,
 }}
 >
         {/* <img src={herosection} alt="herosection"  width="100%"/> */}
-   <h1 className="hero-title">
-        Welcome to ShopVerse
-    </h1>
-
-   <p className="hero-subtitle">
-        Smart Shopping Powered by AI
-    </p>
-<Link
+<motion.h1
+className="hero-title"
+initial={{
+  opacity: 0,
+  y: 60,
+}}
+animate={{
+  opacity: 1,
+  y: 0,
+}}
+transition={{
+  delay: 0.5,
+  duration: 0.8,
+}}
+>        Welcome to ShopVerse
+</motion.h1>
+<motion.p
+className="hero-subtitle"
+initial={{ opacity: 0 }}
+animate={{ opacity: 1 }}
+transition={{
+  delay: 1,
+  duration: 0.8,
+}}
+>        Smart Shopping Powered by AI
+</motion.p><Link
   to="/products"
   style={{
     textDecoration: "none",
   }}
 >
-  <button className="hero-button">
-        Shop Now
-    </button></Link>
-    </div>
+<motion.button
+className="hero-button"
+whileHover={{
+  scale: 1.08,
+  boxShadow: "0 0 30px #ff9800",
+}}
+whileTap={{
+  scale: 0.95,
+}}
+animate={{
+  y: [0, -4, 0],
+}}
+transition={{
+  y: {
+    repeat: Infinity,
+    duration: 2,
+    ease: "easeInOut",
+  },
+}}
+>        Shop Now
+   </motion.button></Link>
+    </motion.div>
     );
 }
 
