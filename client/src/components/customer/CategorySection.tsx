@@ -1,0 +1,120 @@
+import electronics from "../../assets/categories/Electronic.jpg";
+import fashion from "../../assets/categories/Fashion.jpg";
+import home from "../../assets/categories/Home.jpg";
+import beauty from "../../assets/categories/Beauty.jpg";
+import { Link } from "react-router-dom";
+
+function CategorySection() {
+return (
+    <div
+    style={{
+        backgroundColor: "#811515",
+        padding: "50px 30px",
+        }}
+    >
+    <h2
+        style={{
+            textAlign: "center",
+            fontSize: "35px",
+            marginBottom: "40px",
+            color: "white",
+            fontWeight : "bold" ,
+        }}>
+        Shop by Category
+    </h2>
+
+    <div
+        style={{
+            display: "flex",
+            justifyContent: "space-around",
+            gap: "20px",
+            flexWrap: "wrap",
+        }}>
+<Link
+  to="/electronics"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
+  <div style={cardStyle}>
+    <img src={electronics} />
+    <h3>Electronics</h3>
+  </div>
+</Link>
+{/* fashion */}
+       <Link
+  to="/fashion"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
+        <div style={cardStyle}>
+            <img
+    src={fashion} alt="Fashion"
+    style={{
+        width: "100%",
+        height: "150px",
+        objectFit: "cover",
+        borderRadius: "10px",
+    }}/>
+            <h3>👕 Fashion</h3>
+        </div></Link>
+
+{/* home */}
+<Link
+  to="/home-category"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
+        <div style={cardStyle}>
+            <img
+    src={home} alt="home"
+    style={{
+        width: "100%",
+        height: "150px",
+        objectFit: "cover",
+        borderRadius: "10px",
+    }}/>
+            <h3>🏠 Home</h3>
+        </div></Link>
+
+        {/* beauty */}
+
+<Link
+  to="/beauty"
+  style={{
+    textDecoration: "none",
+    color: "inherit",
+  }}
+>
+        <div style={cardStyle}>
+        <img
+    src={beauty} alt="Beauty"
+    style={{
+        width: "100%",
+        height: "150px",
+        objectFit: "cover",
+        borderRadius: "10px",
+    }}/>
+            <h3>💄 Beauty</h3>
+        </div></Link>
+        </div>
+    </div>
+    );
+}
+
+const cardStyle = {
+    width: "250px",
+    backgroundColor: "white",
+    borderRadius: "10px",
+    padding: "15px",
+    textAlign: "center" as const,
+    boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+    cursor: "pointer",
+};
+
+export default CategorySection;

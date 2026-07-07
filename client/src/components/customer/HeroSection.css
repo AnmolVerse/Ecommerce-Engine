@@ -1,0 +1,162 @@
+.hero-section {
+    position: relative;
+    overflow: hidden;
+
+    height: 400px;
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+
+    padding: 20px;
+
+    animation: heroZoom 12s ease-in-out infinite alternate;
+}
+
+/* Dark overlay */
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.55)
+    );
+
+    z-index: 1;
+}
+
+/* Keep content above overlay */
+
+.hero-title,
+.hero-subtitle,
+.hero-button{
+    position: relative;
+    z-index: 2;
+}
+
+/* Heading */
+
+.hero-title{
+    font-size: 52px;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(0,0,0,.6);
+}
+
+/* Subtitle */
+
+.hero-subtitle{
+    margin-top: 20px;
+    font-size: 22px;
+    color: #f1f1f1;
+    text-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+/* Button */
+
+.hero-button{
+    margin-top: 35px;
+
+    padding: 14px 35px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(90deg,#ff9800,#ffb300);
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .35s;
+}
+
+.hero-button:hover{
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 20px #ff9800,
+        0 0 45px rgba(255,152,0,.7);
+
+}
+
+/* Background cinematic zoom */
+
+@keyframes heroZoom{
+
+    from{
+
+        background-size:100%;
+
+    }
+
+    to{
+
+        background-size:110%;
+
+    }
+
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width:1024px){
+
+.hero-section{
+    height:350px;
+}
+
+.hero-title{
+    font-size:40px;
+}
+
+.hero-subtitle{
+    font-size:20px;
+}
+
+.hero-button{
+    padding:12px 28px;
+}
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:768px){
+
+.hero-section{
+    height:280px;
+    padding:15px;
+}
+
+.hero-title{
+    font-size:30px;
+}
+
+.hero-subtitle{
+    font-size:17px;
+    margin-top:12px;
+}
+
+.hero-button{
+    margin-top:25px;
+    padding:10px 22px;
+    font-size:16px;
+}
+
+}
